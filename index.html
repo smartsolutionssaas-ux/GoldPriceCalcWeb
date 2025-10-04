@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Jewel Price Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <h1>Gold Jewel Price Calculator</h1>
+    <div class="container">
+        
+        <div class="card input-card">
+            <h2>Key Information</h2>
+            <div class="form-group">
+                <label for="rate">Gold Rate (per gram) <span class="hint">₹/g</span></label>
+                <input type="number" id="rate" placeholder="e.g., 6200" min="0" step="0.01">
+            </div>
+            
+            <div class="form-group">
+                <label for="makeRegular">Making Charges (%)</label>
+                <input type="number" id="makeRegular" value="16" min="0" step="0.01">
+            </div>
+            
+            <div class="form-group">
+                <label for="gstGold">GST - Gold (%)</label>
+                <input type="number" id="gstGold" value="3" min="0" step="0.01">
+            </div>
+            
+            <div class="form-group">
+                <label for="gstMaking">GST - Making Charges (%)</label>
+                <input type="number" id="gstMaking" value="5" min="0" step="0.01">
+            </div>
+            
+            <div class="form-group">
+                <label for="totalG">Jewel (in grams)</label>
+                <input type="number" id="totalG" placeholder="e.g., 12.5" min="0" step="0.001">
+            </div>
+            
+            <div class="form-group">
+                <label for="reservedG">Jewel - Reserved via scheme (g)</label>
+                <input type="number" id="reservedG" placeholder="e.g., 6" min="0" step="0.001">
+            </div>
+            
+            <div class="form-group">
+                <label for="waiveReserved">Making Charges - Waived Off for Reserved (%)</label>
+                <input type="number" id="waiveReserved" value="16" min="0" step="0.01">
+            </div>
+        </div>
+        
+        <div class="card result-card">
+            <h2>Breakdown</h2>
+            <div id="results">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="card info-card">
+            <h2>How it's calculated</h2>
+            <div class="info-text">
+                <p>1) We split the gold (in grams) into two parts:</p>
+                <ul>
+                    <li>Reserved (from your scheme)</li>
+                    <li>Regular (to buy now)</li>
+                </ul>
+                <p>2) Price of Gold = (Reserved + Regular) grams × today's gold rate.</p>
+                <p>3) Reserved gold price is NOT paid now. You only pay its GST.</p>
+                
+                <p>4) Making Charges are applied on the full gold value (Reserved + Regular).</p>
+                <p>5) Making Charges waiver for reserved grams is then subtracted.</p>
+                <p>6) GST is calculated for the full making charges before waiver.</p>
+                
+                <p>7) GST is split into two parts:</p>
+                <ul>
+                    <li>3% on the total gold value (Reserved + Regular).</li>
+                    <li>5% on the full making charges (before waiver).</li>
+                </ul>
+                
+                <p><strong>You pay now:</strong> Regular gold price + Making charges after waiver + both GST amounts.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
